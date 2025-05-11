@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ahmet Saltukhan Sağlam</title>
+  <meta name="description" content="Teknoloji • Tasarım • Yazılım">
+  <meta property="og:title" content="Ahmet Saltukhan Sağlam">
+  <meta property="og:description" content="Teknoloji • Tasarım • Yazılım">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="IMG_3088.JPG">
+  <meta property="og:url" content="YOUR_WEBSITE_URL_HERE">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --font-primary: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+
+      --c-accent: #c0392b;
+      --c-accent-dark: #922b21;
+
+      --bg-gradient-start: #1b1b1b;
+      --bg-gradient-mid: #121212;
+      --bg-gradient-end: #1b1b1b;
+
+      /* Dark Theme (Default) */
+      --bg-body: #121212;
+      --bg-surface: rgba(28, 28, 38, 0.92); /* Slightly more opaque */
+      --bg-surface-hover: rgba(35, 35, 45, 0.95);
+      --text-primary: #f0f0f5;
+      --text-secondary: #a0a0b0;
+      --border-color: rgba(255, 255, 255, 0.1);
+      --shadow-color-soft: rgba(0, 0, 0, 0.2);
+      --shadow-color-medium: rgba(0, 0, 0, 0.3);
+      --shadow-color-strong: rgba(0, 0, 0, 0.25); /* For container hover */
+      --button-hover-bg: rgba(255, 255, 255, 0.05);
+      --scrollbar-thumb: rgba(200, 200, 200, 0.15);
+    }
+
+    [data-theme="light"] {
+      --bg-body: #f4f5f7;
+      --bg-surface: rgba(255, 255, 255, 0.95);
+      --bg-surface-hover: rgba(245, 245, 250, 0.98);
+      --text-primary: #1a1a2e;
+      --text-secondary: #5c5c7e;
+      --border-color: rgba(0, 0, 0, 0.1);
+      --shadow-color-soft: rgba(0, 0, 0, 0.07);
+      --shadow-color-medium: rgba(0, 0, 0, 0.1);
+      --shadow-color-strong: rgba(0, 0, 0, 0.15);
+      --button-hover-bg: rgba(0, 0, 0, 0.03);
+      --scrollbar-thumb: rgba(0, 0, 0, 0.2);
+      --bg-gradient-start: #e0e0e0;
+      --bg-gradient-mid: #f0f0f0;
+      --bg-gradient-end: #e0e0e0;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px; /* Base font size */
+      scroll-behavior: smooth;
+      -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
+    }
+
+    body {
+      font-family: var(--font-primary);
+      background-color: var(--bg-body);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+      overflow-x: hidden; /* Prevent horizontal scroll on body */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body::before { /* Animated background */
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-mid), var(--bg-gradient-end));
+      background-size: 400% 400%;
+      animation: bgAnim 25s ease infinite;
+      z-index: -1;
+      opacity: 0.7;
+    }
+
+    @keyframes bgAnim {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .main-container {
+      width: 100%;
+      max-width: 380px; /* Optimal for this type of card */
+      background-color: var(--bg-surface);
+      border-radius: 24px; /* Softer radius */
+      padding: clamp(1.5rem, 5vw, 2rem); /* Responsive padding */
+      text-align: center;
+      box-shadow: 0 8px 32px var(--shadow-color-medium);
+      backdrop-filter: blur(8px); /* Reduced blur for clarity */
+      -webkit-backdrop-filter: blur(8px); /* Safari support - Reduced blur */
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      max-height: 90vh;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--scrollbar-thumb) transparent;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .main-container:hover {
+        transform: translateY(-6px) scale(1.01);
+        box-shadow: 0 16px 48px var(--shadow-color-strong);
+      }
+    }
+
+    .main-container::-webkit-scrollbar { width: 6px; }
+    .main-container::-webkit-scrollbar-thumb { background-color: var(--scrollbar-thumb); border-radius: 3px; }
+    .main-container::-webkit-scrollbar-track { background-color: transparent; }
+    
+    /* Header elements styling */
+    .profile-header {
+      margin-bottom: 1.5rem;
+    }
+
+    .avatar {
+      width: clamp(100px, 25vw, 120px); /* Responsive avatar */
+      height: clamp(100px, 25vw, 120px);
+      border-radius: 50%;
+      border: 3px solid var(--c-accent);
+      object-fit: cover;
+      margin: 0 auto 1rem; /* Adjusted margin */
+      transition: transform 0.3s ease;
+      box-shadow: 0 4px 15px var(--shadow-color-soft);
+    }
+    .avatar:hover { transform: scale(1.12) rotate(3deg); }
+
+    h1 {
+      font-family: 'Roboto', var(--font-primary);
+      font-size: clamp(1.5rem, 5vw, 1.8rem); /* Responsive H1 */
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 0.3rem;
+      background: linear-gradient(90deg, var(--c-accent), var(--c-accent-dark));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block; /* Allows gradient text to work */
+    }
+
+    #greeting {
+      font-size: clamp(0.85rem, 2.5vw, 0.9rem);
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+      min-height: 1.2em; /* Prevent layout shift */
+    }
+
+    .bio {
+      font-size: clamp(0.85rem, 2.5vw, 0.9rem);
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem; /* Gap for emojis */
+      flex-wrap: wrap; /* Allow wrapping on small screens */
+    }
+    .bio .emoji {
+      display: inline-block;
+      animation: subtle-float 3s ease-in-out infinite alternate;
+      font-size: 1.1em; /* Slightly larger emojis */
+    }
+    @keyframes subtle-float {
+      from { transform: translateY(-2px); }
+      to   { transform: translateY(2px); }
+    }
+
+    .divider {
+      height: 1px;
+      background-color: var(--border-color);
+      margin: 1.5rem 0;
+      opacity: 0.7;
+    }
+
+    /* Links Grid */
+    .links-grid {
+      display: grid;
+      gap: 0.6rem; /* Slightly adjusted gap */
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Responsive columns */
+      margin-bottom: 1.5rem;
+    }
+    
+    .link-button {
+      padding: 0.7rem 0.5rem;
+      background-color: transparent;
+      color: var(--text-primary);
+      border-radius: 10px; /* Softer radius */
+      font-weight: 500;
+      font-size: clamp(0.8rem, 2.2vw, 0.9rem);
+      border: 1px solid var(--border-color);
+      transition: all 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      user-select: none; /* Prevent text selection on click */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .link-button::before { /* Shimmer effect */
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -120%; /* Start further left */
+      width: 60%; /* Narrower shimmer */
+      height: 100%;
+      background: linear-gradient(90deg, transparent, var(--button-hover-bg), var(--button-hover-bg), transparent);
+      transform: skewX(-25deg); /* Angled shimmer */
+      transition: left 0.7s cubic-bezier(0.25, 0.1, 0.25, 1);
+      z-index: -1;
+    }
+    .link-button:hover {
+      transform: translateY(-3px) scale(1.03); /* More pronounced hover */
+      border-color: var(--c-accent);
+      color: var(--c-accent);
+      box-shadow: 0 6px 18px rgba(192, 57, 43, 0.2); /* Accent shadow */
+    }
+    .link-button:hover::before { left: 120%; } /* Move shimmer across */
+    .link-button:active { transform: translateY(-1px) scale(0.98); box-shadow: 0 2px 8px rgba(192, 57, 43, 0.15); }
+
+    /* Blog Section */
+    .blog-section {
+      max-width: 100%; /* Ensure it doesn't overflow container */
+      margin-bottom: 1.5rem;
+      overflow: hidden; /* Hide scrollbar if not needed */
+    }
+    .blog-section h2 {
+      font-family: 'Roboto', var(--font-primary);
+      font-size: clamp(1.1rem, 3.5vw, 1.2rem);
+      color: var(--c-accent);
+      margin-bottom: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.02em; /* Slight letter spacing */
+      text-align: center;
+      text-rendering: optimizeLegibility; /* Improve text clarity */
+    }
+    .posts-scroller-wrapper { /* For better scrollbar handling & padding */
+      width: calc(100% + 2rem); /* Extend beyond container padding */
+      margin-left: -1rem;
+      margin-right: -1rem;
+      padding: 0.25rem 1rem; /* Padding for first/last card visibility */
+      /* overflow: hidden; */ /* Removed to prevent clipping on hover scale */
+    }
+    .posts-scroller {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+      scrollbar-width: thin;
+      scrollbar-color: var(--scrollbar-thumb) transparent;
+      padding-bottom: 0.75rem; /* Space for scrollbar */
+    }
+    .posts-scroller::-webkit-scrollbar { height: 6px; }
+    .posts-scroller::-webkit-scrollbar-thumb { background-color: var(--scrollbar-thumb); border-radius: 3px; }
+    .posts-scroller::-webkit-scrollbar-track { background-color: transparent; }
+
+    .blog-post {
+      flex: 0 0 clamp(140px, 45vw, 180px); /* Responsive card width */
+      max-width: 180px;
+      aspect-ratio: 1 / 1;
+      background-color: var(--bg-surface-hover); /* Slightly different bg for cards */
+      border-radius: 16px; /* Consistent radius */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem; /* Balanced padding */
+      scroll-snap-align: start;
+      opacity: 0;
+      transform: translateY(15px) scale(0.95);
+      transition: all 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
+      will-change: transform, opacity, box-shadow;
+      box-shadow: 0 4px 10px var(--shadow-color-soft);
+      cursor: pointer;
+      position: relative; /* For z-index context */
+    }
+    .blog-post.visible { opacity: 1; transform: translateY(0) scale(1); }
+    .blog-post:hover {
+      background-color: var(--bg-surface); /* Use surface for a subtle change or a darker variant if defined */
+      box-shadow: 0 6px 20px var(--shadow-color-medium);
+      transform: translateY(-5px) scale(1.03);
+      z-index: 10; /* Ensure hovered card is on top */
+    }
+    .post-icon {
+      font-size: clamp(1.8rem, 6vw, 2.2rem); /* Responsive icon */
+      margin-bottom: 0.5rem;
+      color: var(--c-accent);
+      transition: transform 0.3s ease;
+    }
+    .blog-post:hover .post-icon { transform: scale(1.2) rotate(-5deg); }
+    .post-content h3 {
+      font-size: clamp(0.9rem, 2.8vw, 1rem);
+      margin-bottom: 0.2rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      text-align: center;
+      line-height: 1.2;
+    }
+    .post-content p {
+      font-size: clamp(0.75rem, 2vw, 0.8rem);
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem; /* Space before "Read more" */
+      text-align: center;
+      line-height: 1.3;
+    }
+    .read-more-link {
+      font-size: clamp(0.75rem, 2vw, 0.8rem);
+      color: var(--c-accent);
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: color 0.2s, gap 0.2s;
+      margin-top: auto; /* Push to bottom if content is short */
+    }
+    .read-more-link::after { content: '→'; transition: transform 0.2s; font-size: 1em; }
+    .read-more-link:hover { color: var(--c-accent-dark); gap: 0.5rem; }
+    .read-more-link:hover::after { transform: translateX(3px); }
+
+    /* Subscribe Form */
+    .subscribe-section {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .subscribe-form {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      width: 100%;
+    }
+    .subscribe-input {
+      padding: 0.85rem 1rem;
+      border: 1px solid var(--border-color); /* Subtle border */
+      border-radius: 10px;
+      background-color: var(--bg-body); /* Changed from --bg-dark to --bg-body for better contrast and variable consistency */
+      color: var(--text-primary);
+      width: 100%;
+      font-family: inherit;
+      font-size: clamp(0.9rem, 2.8vw, 0.95rem);
+      transition: all 0.3s ease;
+      box-shadow: inset 0 1px 3px var(--shadow-color-soft); /* Inner shadow */
+    }
+    .subscribe-input:focus {
+      outline: none;
+      border-color: var(--c-accent);
+      box-shadow: inset 0 1px 3px var(--shadow-color-soft), 0 0 0 2px var(--c-accent);
+    }
+    .subscribe-button {
+      padding: 0.85rem;
+      border: none;
+      border-radius: 10px;
+      background-color: var(--c-accent);
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: inherit;
+      font-size: clamp(0.9rem, 2.8vw, 0.95rem);
+      position: relative;
+      overflow: hidden;
+      user-select: none;
+    }
+    .subscribe-button::after { /* Ripple effect */
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 5px; height: 5px;
+      background-color: rgba(255, 255, 255, 0.7); /* Brighter ripple */
+      opacity: 0;
+      border-radius: 50%;
+      transform: scale(1) translate(-50%, -50%);
+      transform-origin: 50% 50%;
+    }
+    .subscribe-button:hover {
+      background-color: var(--c-accent-dark);
+      transform: translateY(-2px) scale(1.02); /* Subtle lift and scale */
+      box-shadow: 0 6px 18px rgba(146, 43, 33, 0.3);
+    }
+    .subscribe-button:active::after { animation: ripple 0.5s ease-out; }
+    @keyframes ripple {
+      0% { transform: scale(0) translate(-50%, -50%); opacity: 1; }
+      100% { transform: scale(40) translate(-50%, -50%); opacity: 0; }
+    }
+    #subscribe-message {
+      margin-top: 0.5rem;
+      font-size: clamp(0.8rem, 2.2vw, 0.9rem);
+      min-height: 1.2em; /* Prevent layout shift */
+      transition: color 0.3s ease;
+    }
+
+    /* Contact & Footer */
+    .contact-section {
+      margin-top: 1.5rem;
+      font-size: clamp(0.85rem, 2.5vw, 0.9rem);
+      color: var(--text-secondary);
+    }
+    .contact-section a {
+      color: var(--c-accent);
+      text-decoration: none;
+      transition: color 0.2s;
+      font-weight: 500;
+    }
+    .contact-section a:hover { color: var(--c-accent-dark); text-decoration: underline; }
+
+    .site-footer {
+      margin-top: 1.5rem;
+      padding-top: 1rem; /* Space above footer content */
+      border-top: 1px solid var(--border-color); /* Separator */
+      font-size: clamp(0.75rem, 2vw, 0.8rem);
+      color: var(--text-secondary);
+    }
+    .site-footer p { margin-bottom: 0.2rem; }
+    .site-footer .heart-emoji {
+      color: var(--c-accent);
+      animation: heartbeat 1.5s ease-in-out infinite;
+      display: inline-block; /* For transform to work */
+    }
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.25); }
+    }
+
+    /* Scroll to Top Button */
+    #scroll-to-top {
+      position: fixed;
+      right: 1rem; /* Adjusted for smaller screens */
+      bottom: 1rem;
+      background-color: var(--c-accent);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none; /* Hidden by default */
+      font-size: 1.3rem; /* Larger icon */
+      box-shadow: 0 5px 20px var(--shadow-color-medium);
+      transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+      width: 48px; height: 48px;
+      display: flex; /* For centering icon */
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: translateY(20px);
+      z-index: 1000;
+    }
+    #scroll-to-top:hover {
+      background-color: var(--c-accent-dark);
+      transform: translateY(-3px) scale(1.1); /* More engaging hover */
+      box-shadow: 0 8px 25px var(--shadow-color-strong);
+    }
+    #scroll-to-top:active { transform: translateY(0) scale(1); }
+    #scroll-to-top.show {
+      display: flex;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Accessibility Focus States */
+    button:focus-visible,
+    a:focus-visible,
+    input:focus-visible,
+    .posts-scroller:focus-visible {
+      outline: 2px solid var(--c-accent);
+      outline-offset: 2px;
+      box-shadow: 0 0 0 4px rgba(var(--c-accent), 0.3); /* Softer focus ring */
+    }
+    /* Remove default outline for non-keyboard focus */
+    button:focus:not(:focus-visible),
+    a:focus:not(:focus-visible),
+    input:focus:not(:focus-visible),
+    .posts-scroller:focus:not(:focus-visible) {
+      outline: none;
+    }
+    
+    /* Utility for screen readers only */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+
+    /* Image Modal Styles */
+    .image-modal {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.75); /* Darker overlay */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      padding: 1rem;
+    }
+    .image-modal.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    .modal-content {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+      object-fit: contain; /* Ensure image aspect ratio is maintained */
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+    }
+    .image-modal.show .modal-content {
+      transform: scale(1);
+    }
+    .modal-close-button {
+      position: absolute;
+      top: clamp(1rem, 5vw, 2rem);
+      right: clamp(1rem, 5vw, 2rem);
+      font-size: 2.5rem;
+      font-weight: 300; /* Lighter weight for X */
+      color: #fff;
+      background: none;
+      border: none;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0.25rem 0.5rem;
+      transition: color 0.2s ease, transform 0.2s ease;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+    .modal-close-button:hover {
+      color: var(--c-accent);
+      transform: scale(1.1);
+    }
+    body.modal-open {
+      overflow: hidden; /* Prevent background scroll when modal is open */
+    }
+
+  </style>
+</head>
+<body>
+  <main class="main-container" id="mainCard">
+    <header class="profile-header">
+      <button id="theme-toggle" type="button" aria-label="Koyu temaya geç">🌙</button>
+      <img src="IMG_3088.JPG" alt="Ahmet Saltukhan Sağlam - Profil fotoğrafı" class="avatar">
+    <h1>Ahmet Saltukhan Sağlam</h1>
+      <div id="greeting" aria-live="polite"></div>
+      <p class="bio">
+        <span class="emoji" role="img" aria-label="Bilgisayar">💻</span> Teknoloji
+        <span class="emoji" role="img" aria-label="Palet">🎨</span> Tasarım
+        <span class="emoji" role="img" aria-label="Roket">🚀</span> Yazılım
+      </p>
+    </header>
+
+    <nav class="links-grid" aria-label="Sosyal Medya Bağlantıları">
+      <a href="https://instagram.com/ahmetsaglam" target="_blank" rel="noopener noreferrer" class="link-button">Instagram</a>
+      <a href="https://twitter.com/ahmetsaglam" target="_blank" rel="noopener noreferrer" class="link-button">Twitter</a>
+      <a href="https://github.com/ahmetsaglam" target="_blank" rel="noopener noreferrer" class="link-button">GitHub</a>
+      <a href="https://linkedin.com/in/ahmetsaglam" target="_blank" rel="noopener noreferrer" class="link-button">LinkedIn</a>
+      <a href="https://yarptechnology.com" target="_blank" rel="noopener noreferrer" class="link-button">YARP</a>
+      <a href="https://youtube.com/ahmetsaglam" target="_blank" rel="noopener noreferrer" class="link-button">YouTube</a>
+      <a href="https://medium.com/@ahmetsaglam" target="_blank" rel="noopener noreferrer" class="link-button">Medium</a>
+      <a href="https://dribbble.com/ahmetsaglam" target="_blank" rel="noopener noreferrer" class="link-button">Dribbble</a>
+    </nav>
+
+    <div class="divider"></div>
+
+    <section class="blog-section">
+      <h2 class="section-title">📝 Öne Çıkan Yazılar</h2>
+      <div class="blog-posts-slider-container">
+        <div class="blog-posts-slider" id="blogPostsSlider">
+          <!-- Blog kartları buraya JavaScript ile eklenecek -->
+          </div>
+        <button class="slider-nav prev" aria-label="Önceki Yazı"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></button>
+        <button class="slider-nav next" aria-label="Sonraki Yazı"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></button>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="subscribe-section" aria-labelledby="subscribe-heading">
+      <h2 id="subscribe-heading" class="sr-only">Bültene Abone Ol</h2>
+      <form id="subscribe-form" class="subscribe-form" novalidate>
+        <label for="email-input" class="sr-only">Email Adresiniz</label>
+        <input type="email" id="email-input" class="subscribe-input" placeholder="Email adresiniz..." required aria-describedby="email-error">
+        <button type="submit" class="subscribe-button">Abone Ol</button>
+        <div id="subscribe-message" role="alert" aria-live="assertive"></div>
+        <div id="email-error" class="sr-only" aria-live="assertive"></div> <!-- For specific email errors -->
+      </form>
+    </section>
+
+    <section class="contact-section">
+      <p>Email: <a href="mailto:ahmet@example.com">ahmet@example.com</a></p>
+    </section>
+
+    <footer class="site-footer">
+      <p>&copy; <span id="current-year">2025</span> Ahmet Saltukhan Sağlam</p>
+      <p>Built with <span class="heart-emoji" role="img" aria-label="Kalp">❤️</span> in Istanbul</p>
+    </footer>
+  </main>
+
+  <button id="scroll-to-top" type="button" aria-label="Sayfanın başına dön">⬆️</button>
+
+  <div id="image-modal" class="image-modal" role="dialog" aria-modal="true" aria-labelledby="modal-image-title" style="display: none;">
+    <button class="modal-close-button" type="button" aria-label="Kapat">&times;</button>
+    <img src="" alt="Profil Fotoğrafı - Büyütülmüş" id="modal-image" class="modal-content">
+    <h2 id="modal-image-title" class="sr-only">Profil Fotoğrafı Görüntüleyici</h2>
+  </div>
+
+  <script>
+    // --- DOM Elements ---
+    const themeToggleButton = document.getElementById('theme-toggle');
+    const greetingElement = document.getElementById('greeting');
+    const bioElement = document.getElementById('bio');
+    const subscribeForm = document.getElementById('subscribe-form');
+    // Corrected ID for email input
+    const emailInput = document.getElementById('email-input'); 
+    const subscribeButton = document.querySelector('#subscribe-form button[type="submit"]'); // More specific selector
+    const subscribeMessageElement = document.getElementById('subscribe-message');
+    const blogPostsSlider = document.getElementById('blogPostsSlider');
+    const scrollToTopButton = document.getElementById('scroll-to-top'); // Corrected ID
+    const profilePic = document.querySelector('.avatar'); // Corrected selector for avatar used as profile pic trigger
+    const modal = document.getElementById('image-modal'); // Corrected ID
+    const modalImage = document.getElementById('modal-image');
+    const closeModalButton = document.querySelector('#image-modal .modal-close-button'); // Corrected selector
+    const currentYearSpan = document.getElementById('current-year');
+    const mainContainer = document.getElementById('mainCard'); // Main scrollable container
+
+    // --- Global State & Config ---
+    let currentCardIndex = 0;
+    let blogAutoScrollInterval;
+    let isBlogDragging = false;
+    let blogStartX;
+    let blogVelocity = 0;
+    let blogAnimationFrame;
+
+    const BLOG_AUTO_SCROLL_INTERVAL = 7000; // ms
+    const MIN_SWIPE_FOR_NAV = 40; // Adjusted for better sensitivity
+
+    const themeConfig = {
+      light: { emoji: '☀️', name: 'Aydınlık' },
+      dark: { emoji: '🌙', name: 'Karanlık' }
+    };
+
+    const greetings = {
+        morning: "Günaydın! ☀️",
+        afternoon: "Tünaydın! 🌤️",
+        evening: "İyi akşamlar! 🌙",
+        night: "İyi geceler! 🦉",
+        default: "Merhaba! 👋"
+    };
+    const bioEmojis = ['💻', '🎨', '💡', '🚀', '🌍', '✨'];
+
+    // --- Utility Functions ---
+    function setAttributes(el, attrs) {
+      if (!el) return;
+      for (const key in attrs) {
+        el.setAttribute(key, attrs[key]);
+      }
+    }
+
+    function debounce(func, wait) {
+      let timeout;
+      return function executedFunction(...args) {
+        const later = () => {
+          clearTimeout(timeout);
+          func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+      };
+    }
+
+    // --- Theme Management ---
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('user-theme', theme); // Consistent key with admin panel if any
+      if (themeToggleButton) {
+        const currentThemeName = themeConfig[theme]?.name || 'Bilinmeyen';
+        const nextTheme = theme === 'dark' ? 'light' : 'dark';
+        const nextThemeName = themeConfig[nextTheme]?.name || 'Bilinmeyen';
+
+        themeToggleButton.setAttribute('aria-label', `Mevcut tema: ${currentThemeName}. ${nextThemeName} temaya geç.`);
+        themeToggleButton.setAttribute('title', `${nextThemeName} temaya geç`);
+        
+        // Emoji animation handled by CSS through 'changing' class
+        themeToggleButton.classList.add('changing');
+        // Update emoji after a short delay to sync with CSS animation
+        setTimeout(() => {
+          themeToggleButton.textContent = themeConfig[theme]?.emoji || '❓';
+          themeToggleButton.classList.remove('changing');
+        }, 150); // Half of the CSS animation duration (if 300ms)
+      }
+    }
+
+    function toggleTheme() {
+      const currentTheme = document.documentElement.getAttribute('data-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      applyTheme(newTheme);
+    }
+
+    // --- UI Enhancements & Content ---
+    function updateGreeting() {
+      if (greetingElement) {
+        const currentHour = new Date().getHours();
+        let greetingText = greetings.default;
+        if (currentHour < 5 || currentHour >= 22) greetingText = greetings.night;
+        else if (currentHour < 12) greetingText = greetings.morning;
+        else if (currentHour < 18) greetingText = greetings.afternoon;
+        else greetingText = greetings.evening;
+        greetingElement.textContent = greetingText;
+      }
+    }
+
+    function animateBioEmojis() {
+      if (bioElement) {
+        // Ensure existing text structure if it's more complex
+        // This simplified version replaces the content, adjust if needed.
+        const bioTextParts = ['Teknoloji', 'Tasarım', 'Yazılım'];
+        let content = '';
+        let availableEmojis = [...bioEmojis];
+        bioTextParts.forEach((part, index) => {
+            if (availableEmojis.length === 0) availableEmojis = [...bioEmojis];
+            const emojiIndex = Math.floor(Math.random() * availableEmojis.length);
+            const emoji = availableEmojis.splice(emojiIndex, 1)[0];
+            content += `<span class="emoji" role="img" aria-label="${part} ikonu">${emoji}</span> ${part}`;
+            if (index < bioTextParts.length - 1) content += ' • ';
+        });
+        bioElement.innerHTML = content;
+      }
+    }
+    
+    function updateCurrentYear() {
+        if (currentYearSpan) {
+            currentYearSpan.textContent = new Date().getFullYear();
+        }
+    }
+
+    // --- Blog Post Creation & Slider (Dynamic from LocalStorage) ---
+    function createBlogPostCard(post) {
+      const card = document.createElement('a');
+      card.href = post.link || `blog-post-template.html?id=${post.id || Date.now()}`;
+      card.className = 'blog-card'; // Make sure this class matches your CSS for blog cards
+      setAttributes(card, {'aria-label': `Blog yazısı: ${post.title || 'Başlıksız'}`, 'role': 'article'});
+
+      const postDate = new Date(post.date);
+      const formattedDate = !isNaN(postDate)
+        ? `${postDate.getDate()} ${postDate.toLocaleString('tr-TR', { month: 'long' })} ${postDate.getFullYear()}`
+        : 'Belirsiz Tarih';
+
+      // Adjust HTML structure to match your desired card layout from previous working versions
+      // This is a generic structure; ensure class names for image, title, excerpt, etc., are correct.
+      card.innerHTML = `
+        <div class="blog-card-image-container">
+          ${post.image ? `<img src="${post.image}" alt="${post.title || 'Blog Görseli'}" class="blog-card-image" loading="lazy">` : '<div class="blog-card-image-placeholder">🖼️</div>'}
+        </div>
+        <div class="blog-card-content">
+          <span class="blog-card-category">${post.category || 'Genel'}</span>
+          <h3 class="blog-card-title">${post.title || 'Başlıksız Yazı'}</h3>
+          <p class="blog-card-excerpt">${post.excerpt || 'Kısa bir açıklama bulunmuyor.'}</p>
+          <div class="blog-card-meta">
+            <span class="blog-card-date">🗓️ ${formattedDate}</span>
+          </div>
+        </div>
+      `;
+      return card;
+    }
+    
+    const getBlogCardsFromDOM = () => Array.from(blogPostsSlider ? blogPostsSlider.children.  filter(child => child.classList.contains('blog-card')) : []);
+
+    function loadBlogPosts() {
+      if (!blogPostsSlider) {
+        console.warn('Blog post slider (#blogPostsSlider) bulunamadı.');
+        return;
+      }
+      blogPostsSlider.innerHTML = ''; // Clear previous cards
+
+      const navPrev = document.querySelector('.blog-section .slider-nav.prev');
+      const navNext = document.querySelector('.blog-section .slider-nav.next');
+
+      try {
+        const postsDataString = localStorage.getItem('blogPosts');
+        if (!postsDataString) {
+          blogPostsSlider.innerHTML = '<p class="no-posts-message">✨ Henüz öne çıkan bir yazı bulunmuyor. Yakında eklenecek!</p>';
+          if (navPrev) navPrev.style.display = 'none';
+          if (navNext) navNext.style.display = 'none';
+          return;
+        }
+
+        let posts = JSON.parse(postsDataString);
+        posts.sort((a, b) => new Date(b.date) - new Date(a.date)); // Newest first
+        
+        const displayPosts = posts.slice(0, 10); // Show up to 10 posts
+
+        if (displayPosts.length === 0) {
+          blogPostsSlider.innerHTML = '<p class="no-posts-message">✨ Henüz öne çıkan bir yazı bulunmuyor.</p>';
+          if (navPrev) navPrev.style.display = 'none';
+          if (navNext) navNext.style.display = 'none';
+          return;
+        }
+
+        displayPosts.forEach(post => {
+          const cardElement = createBlogPostCard(post);
+          blogPostsSlider.appendChild(cardElement);
+        });
+        
+        const currentCards = getBlogCardsFromDOM();
+        if (currentCards.length > 0) {
+            initializeBlogSlider(); // Initialize after cards are added
+        } else {
+          if (navPrev) navPrev.style.display = 'none';
+          if (navNext) navNext.style.display = 'none';
+        }
+      } catch (error) {
+        console.error("Blog yazıları yüklenirken hata:", error);
+        blogPostsSlider.innerHTML = '<p class="no-posts-message" style="color: var(--c-accent);">⚠️ Yazılar yüklenirken bir sorun oluştu.</p>';
+        if (navPrev) navPrev.style.display = 'none';
+        if (navNext) navNext.style.display = 'none';
+      }
+    }
+
+    function updateBlogSliderUI() {
+      const cards = getBlogCardsFromDOM();
+      if (!blogPostsSlider || cards.length === 0 || !cards[0]) return;
+
+      const cardWidth = cards[0].offsetWidth;
+      const sliderStyle = window.getComputedStyle(blogPostsSlider);
+      const gapValue = sliderStyle.gap;
+      let gap = 16; // Default gap if not specified in CSS or 'normal'
+      if (gapValue && gapValue !== 'normal' && !isNaN(parseInt(gapValue))) {
+          gap = parseInt(gapValue, 10);
+      }
+
+      const totalCardWidth = cardWidth + gap;
+      // Ensure currentCardIndex is within bounds
+      const visibleCards = calculateVisibleCards();
+      currentCardIndex = Math.max(0, Math.min(currentCardIndex, cards.length - visibleCards));
+      if (cards.length <= visibleCards) currentCardIndex = 0; // if all visible, stay at start
+
+      blogPostsSlider.style.transform = `translateX(-${currentCardIndex * totalCardWidth}px)`;
+
+      cards.forEach((card, index) => {
+        card.classList.toggle('active', index === currentCardIndex); 
+        setAttributes(card, {'aria-hidden': index !== currentCardIndex ? 'true' : 'false'});
+      });
+
+      const navPrev = document.querySelector('.blog-section .slider-nav.prev');
+      const navNext = document.querySelector('.blog-section .slider-nav.next');
+      
+      if (navPrev) navPrev.disabled = currentCardIndex === 0;
+      if (navNext) navNext.disabled = cards.length === 0 || currentCardIndex >= cards.length - visibleCards;
+
+      if (cards.length <= visibleCards) {
+        if (navPrev) navPrev.style.display = 'none';
+        if (navNext) navNext.style.display = 'none';
+      } else {
+        if (navPrev) navPrev.style.display = 'flex';
+        if (navNext) navNext.style.display = 'flex';
+      }
+    }
+
+    function calculateVisibleCards() {
+      const cards = getBlogCardsFromDOM();
+      if (!blogPostsSlider || !blogPostsSlider.parentElement || cards.length === 0 || !cards[0]) return 1;
+
+      const containerWidth = blogPostsSlider.parentElement.offsetWidth;
+      const cardWidth = cards[0].offsetWidth;
+      const sliderStyle = window.getComputedStyle(blogPostsSlider);
+      const gapValue = sliderStyle.gap;
+      let gap = 16;
+      if (gapValue && gapValue !== 'normal' && !isNaN(parseInt(gapValue))) {
+          gap = parseInt(gapValue, 10);
+      }
+      if (cardWidth === 0) return 1;
+      return Math.max(1, Math.floor(containerWidth / (cardWidth + gap)));
+    }
+
+    function scrollBlog(direction) {
+      const cards = getBlogCardsFromDOM();
+      if (!blogPostsSlider || cards.length === 0) return;
+      const numCards = cards.length;
+      const visible = calculateVisibleCards();
+
+      currentCardIndex += direction;
+      currentCardIndex = Math.max(0, Math.min(currentCardIndex, numCards - visible));
+       if (numCards <= visible) currentCardIndex = 0;
+
+      updateBlogSliderUI();
+      resetBlogAutoScroll();
+    }
+    
+    let isSliderInitialized = false;
+
+    function initializeBlogSlider() {
+      const cards = getBlogCardsFromDOM();
+      if (isSliderInitialized && cards.length > 0) { // Allow re-init if cards changed, but prevent listener duplication
+          updateBlogSliderUI();
+          resetBlogAutoScroll();
+          return;
+      }
+      if (!blogPostsSlider || cards.length === 0) {
+        const navPrev = document.querySelector('.blog-section .slider-nav.prev');
+        const navNext = document.querySelector('.blog-section .slider-nav.next');
+        if (navPrev) navPrev.style.display = 'none';
+        if (navNext) navNext.style.display = 'none';
+        isSliderInitialized = false; // Reset if no cards
+        return;
+      }
+      
+      isSliderInitialized = true; // Set before adding listeners
+
+      const navPrev = document.querySelector('.blog-section .slider-nav.prev');
+      const navNext = document.querySelector('.blog-section .slider-nav.next');
+
+      // Remove old listeners before adding new ones if re-initializing (safer)
+      if (navPrev) { const newPrev = navPrev.cloneNode(true); navPrev.parentNode.replaceChild(newPrev, navPrev); newPrev.onclick = () => scrollBlog(-1); }
+      if (navNext) { const newNext = navNext.cloneNode(true); navNext.parentNode.replaceChild(newNext, navNext); newNext.onclick = () => scrollBlog(1); }
+      
+      // Detach old drag listeners to prevent accumulation if this function is called multiple times
+      // This simple removal might not be enough for listeners on `document`.
+      // A more robust way is to use named functions for listeners and remove them specifically.
+      blogPostsSlider.onmousedown = null;
+      blogPostsSlider.ontouchstart = null;
+      document.onmouseup = null; // Be careful with global listeners
+      document.ontouchend = null;
+      document.onmousemove = null;
+      document.ontouchmove = null;
+      document.onmouseleave = null;
+
+      blogPostsSlider.onmousedown = (e) => {
+        if (e.button !== 0 || getBlogCardsFromDOM().length === 0) return;
+        isBlogDragging = true;
+        blogStartX = e.pageX;
+        blogPostsSlider.classList.add('dragging');
+        cancelAnimationFrame(blogAnimationFrame);
+        clearInterval(blogAutoScrollInterval);
+      };
+
+      blogPostsSlider.ontouchstart = (e) => {
+        if (getBlogCardsFromDOM().length === 0) return;
+        isBlogDragging = true;
+        blogStartX = e.touches[0].pageX;
+        blogPostsSlider.classList.add('dragging');
+        cancelAnimationFrame(blogAnimationFrame);
+        clearInterval(blogAutoScrollInterval);
+      };
+
+      const handleDragEndCommon = (endX) => {
+        if (!isBlogDragging || getBlogCardsFromDOM().length === 0) return;
+        isBlogDragging = false;
+        blogPostsSlider.classList.remove('dragging');
+
+        const dragDistance = endX - blogStartX;
+        if (Math.abs(dragDistance) > MIN_SWIPE_FOR_NAV) {
+          scrollBlog(dragDistance < 0 ? 1 : -1); // Negative distance means swipe left (next card)
+        }
+        // No 'else' needed, as scrollBlog itself calls updateBlogSliderUI, which resets to current valid position.
+        resetBlogAutoScroll();
+      };
+      
+      // Use addEventListener for document listeners for better control (add/remove)
+      // These should ideally be added once and removed if the component is destroyed.
+      // For simplicity here, re-assigning. If issues, switch to add/removeEventListener.
+      document.onmouseup = (e) => { if (isBlogDragging) handleDragEndCommon(e.pageX); };
+      document.ontouchend = (e) => { if (isBlogDragging) handleDragEndCommon(e.changedTouches[0].pageX); };
+      document.onmouseleave = (e) => { if (isBlogDragging) handleDragEndCommon(e.pageX); }; 
+
+      document.onmousemove = (e) => {
+        if (!isBlogDragging || getBlogCardsFromDOM().length === 0) return;
+        // Optional: Provide visual feedback during drag by slightly moving the slider.
+        // const currentX = e.pageX;
+        // const walk = currentX - blogStartX;
+        // const currentTransformVal = -currentCardIndex * (getBlogCardsFromDOM()[0].offsetWidth + parseInt(getComputedStyle(blogPostsSlider).gap || 16));
+        // blogPostsSlider.style.transform = `translateX(${currentTransformVal + walk}px)`;
+      };
+      document.ontouchmove = (e) => { 
+        if (!isBlogDragging || getBlogCardsFromDOM().length === 0) return; 
+        // Optional visual feedback for touch.
+      };
+      
+      window.addEventListener('resize', debounce(() => {
+        if (blogPostsSlider && getBlogCardsFromDOM().length > 0) {
+           updateBlogSliderUI();
+        }
+      }, 200));
+      
+      updateBlogSliderUI();
+      resetBlogAutoScroll();
+    }
+
+    function resetBlogAutoScroll() {
+      clearInterval(blogAutoScrollInterval);
+      const cards = getBlogCardsFromDOM();
+      if (!blogPostsSlider || cards.length === 0) return;
+      const visible = calculateVisibleCards();
+      
+      if (cards.length > visible) {
+        blogAutoScrollInterval = setInterval(() => {
+          if (document.hidden) return;
+          const numCards = cards.length;
+          if (currentCardIndex >= numCards - visible) {
+            currentCardIndex = 0;
+          } else {
+             currentCardIndex++;
+          }
+          updateBlogSliderUI();
+        }, BLOG_AUTO_SCROLL_INTERVAL);
+      }
+    }
+
+    // --- Subscription Form ---
+    function handleSubscription(event) {
+      event.preventDefault();
+      if (!emailInput || !subscribeMessageElement || !subscribeButton) return;
+
+      const email = emailInput.value.trim();
+      const emailErrorElement = document.getElementById('email-error'); // Specific error message element
+
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        subscribeMessageElement.textContent = '⚠️ Lütfen geçerli bir e-posta adresi girin.';
+        subscribeMessageElement.style.color = 'var(--c-accent)';
+        if(emailErrorElement) emailErrorElement.textContent = 'Geçerli bir e-posta girilmelidir.';
+        setAttributes(emailInput, {'aria-invalid': 'true', 'aria-describedby': 'email-error'});
+        emailInput.focus();
+        return;
+      }
+      setAttributes(emailInput, {'aria-invalid': 'false', 'aria-describedby': ''});
+      if(emailErrorElement) emailErrorElement.textContent = '';
+
+      subscribeButton.disabled = true;
+      subscribeButton.textContent = 'Gönderiliyor...';
+      subscribeMessageElement.textContent = '⏳ Talebiniz işleniyor...';
+      subscribeMessageElement.style.color = 'var(--text-secondary)';
+
+      setTimeout(() => {
+        console.log(`Subscription attempt for: ${email}`);
+        subscribeMessageElement.textContent = '🎉 Abone olduğunuz için teşekkürler!';
+        subscribeMessageElement.style.color = 'green'; 
+        emailInput.value = '';
+        subscribeButton.disabled = false;
+        subscribeButton.textContent = 'Abone Ol'; // Restore original text or use the one with emoji
+        
+        setTimeout(() => {
+            if (subscribeMessageElement.textContent.includes('Abone olduğunuz için teşekkürler')) {
+                 subscribeMessageElement.textContent = '';
+            }
+        }, 5000);
+      }, 1500);
+    }
+    
+    // --- Scroll to Top Button ---
+    function initializeScrollToTopButton() {
+      if (!scrollToTopButton || !mainContainer) return;
+
+      mainContainer.addEventListener('scroll', () => {
+        if (mainContainer.scrollTop > 300) {
+            scrollToTopButton.classList.add('show');
+            setAttributes(scrollToTopButton, {'aria-hidden': 'false', 'tabindex': '0'});
+        } else {
+            scrollToTopButton.classList.remove('show');
+            setAttributes(scrollToTopButton, {'aria-hidden': 'true', 'tabindex': '-1'});
+        }
+      });
+
+      scrollToTopButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        mainContainer.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+      // Initial check
+      if (mainContainer.scrollTop > 300) scrollToTopButton.classList.add('show');
+      else scrollToTopButton.classList.remove('show');
+    }
+
+    // --- Profile Picture Modal ---
+    let lastFocusedElementBeforeModal;
+    function initializeProfilePicModal() {
+      if (!profilePic || !modal || !modalImage || !closeModalButton) return;
+
+      profilePic.addEventListener('click', () => {
+        lastFocusedElementBeforeModal = document.activeElement;
+        modalImage.src = profilePic.src;
+        modal.style.display = 'flex';
+        setTimeout(() => modal.classList.add('show'), 10); 
+        document.body.classList.add('modal-open');
+        closeModalButton.focus();
+        modal.addEventListener('keydown', trapFocusInModal);
+      });
+
+      function closeModal() {
+        modal.classList.remove('show');
+        document.body.classList.remove('modal-open');
+        setTimeout(() => {
+          modal.style.display = 'none';
+        }, 300); 
+        modal.removeEventListener('keydown', trapFocusInModal);
+        if(lastFocusedElementBeforeModal) lastFocusedElementBeforeModal.focus();
+      }
+
+      closeModalButton.addEventListener('click', closeModal);
+      modal.addEventListener('click', (event) => {
+        if (event.target === modal) closeModal();
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && modal.classList.contains('show')) closeModal();
+      });
+    }
+
+    function trapFocusInModal(event) {
+        const focusableElements = Array.from(modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')).filter(el => el.offsetParent !== null);
+        if (focusableElements.length === 0) return;
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+
+        if (event.key === 'Tab') {
+            if (event.shiftKey) { 
+                if (document.activeElement === firstElement) {
+                    lastElement.focus();
+                    event.preventDefault();
+                }
+            } else { 
+                if (document.activeElement === lastElement) {
+                    firstElement.focus();
+                    event.preventDefault();
+                }
+            }
+        }
+    }
+    
+    // --- Event Listeners & Initializations ---
+    document.addEventListener('DOMContentLoaded', () => {
+      const initialTheme = localStorage.getItem('user-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      applyTheme(initialTheme);
+      
+      updateGreeting();
+      animateBioEmojis(); // Call after DOM is ready and bioElement is available
+      updateCurrentYear();
+      loadBlogPosts(); // This will call initializeBlogSlider if posts are found
+      
+      if (themeToggleButton) {
+        themeToggleButton.addEventListener('click', toggleTheme);
+        // Additional styling for theme toggle button directly in JS (as per previous state in user's file)
+        // These can also be moved to CSS if preferred for better separation.
+        Object.assign(themeToggleButton.style, {
+            position: 'absolute',
+            top: 'clamp(1rem, 3vw, 1.5rem)',
+            right: 'clamp(1rem, 3vw, 1.5rem)',
+            zIndex: '10',
+            background: 'transparent',
+            border: 'none',
+            color: 'var(--text-secondary)',
+            fontSize: '1.5rem',
+            cursor: 'pointer',
+            padding: '0.25rem',
+            // transition: 'color 0.2s ease, transform 0.2s ease, opacity 0.15s ease-in-out' // Ensure transition is defined for emoji change
+        });
+        // themeToggleButton.addEventListener('mouseenter', () => themeToggleButton.style.color = 'var(--c-accent)');
+        // themeToggleButton.addEventListener('mouseleave', () => themeToggleButton.style.color = 'var(--text-secondary)');
+        // Consider :focus-visible in CSS instead of JS for focus styling
+      }
+      
+      if (subscribeForm) {
+        subscribeForm.addEventListener('submit', handleSubscription);
+        // Reset aria-invalid on input for email
+        if (emailInput) {
+            emailInput.addEventListener('input', () => {
+                setAttributes(emailInput, { 'aria-invalid': 'false', 'aria-describedby': '' });
+                const emailErrorElement = document.getElementById('email-error');
+                if (emailErrorElement) emailErrorElement.textContent = '';
+                // Clear general message if it was an email error
+                if (subscribeMessageElement && subscribeMessageElement.textContent.includes('e-posta')) {
+                    subscribeMessageElement.textContent = '';
+                }
+            });
+        }
+      }
+      
+      initializeScrollToTopButton();
+      initializeProfilePicModal();
+
+      // Re-run bio emoji animation with a slight delay if preferred for visual effect on load
+      // setTimeout(animateBioEmojis, 100);
+    });
+  </script>
+</body>
+</html>

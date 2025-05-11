@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yönetim Paneli</title>
+    <link rel="stylesheet" href="admin-style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Ana siteden favicon varsayımı -->
+    <!-- Font Awesome (ikonlar için) veya SVG ikonları da eklenebilir -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="admin-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Yönetim Paneli</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="#dashboard" class="nav-link active" data-target="dashboard-content"><i class="fas fa-tachometer-alt"></i> Panel</a></li>
+                    <li><a href="#post-management" class="nav-link" data-target="post-management-content"><i class="fas fa-pen-square"></i> Yazı Yönetimi</a></li>
+                    <li><a href="#page-management" class="nav-link" data-target="page-management-content"><i class="fas fa-file-alt"></i> Sayfa Yönetimi</a></li>
+                    <li><a href="#comments" class="nav-link" data-target="comments-content"><i class="fas fa-comments"></i> Yorumlar</a></li>
+                    <li><a href="#settings" class="nav-link" data-target="settings-content"><i class="fas fa-cog"></i> Ayarlar</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <p>&copy; <span id="current-year">2024</span> Panel</p>
+                <a href="index.html" target="_blank" class="view-site-link">Siteyi Görüntüle <i class="fas fa-external-link-alt"></i></a>
+            </div>
+        </aside>
+        <main class="main-content">
+            <header class="main-header">
+                <div class="user-info">
+                    <span>Kullanıcı: Yönetici</span>
+                    <button id="logout-button" class="logout-button" title="Çıkış Yap (Simüle Edilmiştir)"><i class="fas fa-sign-out-alt"></i></button>
+                </div>
+            </header>
+
+            <section id="dashboard-content" class="content-section active-content">
+                <h1><i class="fas fa-tachometer-alt"></i> Panel Ana Sayfası</h1>
+                <p>Yönetim paneline hoş geldiniz. Buradan sitenizin çeşitli bölümlerini yönetebilirsiniz.</p>
+                <div class="quick-stats">
+                    <div class="stat-card">
+                        <h3>Toplam Yazı</h3>
+                        <p id="total-posts-stat">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Toplam Sayfa</h3>
+                        <p id="total-pages-stat">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Toplam Yorum (Bekleyen)</h3>
+                        <p id="total-comments-stat">0</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="post-management-content" class="content-section">
+                <header class="content-header">
+                    <h1><i class="fas fa-pen-square"></i> Yazı Yönetimi</h1>
+                    <button id="add-post-button" class="btn btn-primary"><i class="fas fa-plus"></i> Yeni Yazı Ekle</button>
+                </header>
+                <div class="post-list-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Başlık</th>
+                                <th>Kategori</th>
+                                <th>Tarih</th>
+                                <th>Durum</th>
+                                <th>Yazar</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody id="post-list">
+                            <!-- Yazılar buraya eklenecek -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="page-management-content" class="content-section">
+                <header class="content-header">
+                    <h1><i class="fas fa-file-alt"></i> Sayfa Yönetimi</h1>
+                    <button id="add-page-button" class="btn btn-primary"><i class="fas fa-plus"></i> Yeni Sayfa Ekle</button>
+                </header>
+                <div class="page-list-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Başlık</th>
+                                <th>Kısa URL (Slug)</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody id="page-list">
+                            <!-- Sayfalar buraya eklenecek -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="comments-content" class="content-section">
+                <header class="content-header">
+                    <h1><i class="fas fa-comments"></i> Yorum Yönetimi</h1>
+                    <!-- Belki burada filtreleme seçenekleri eklenebilir (örn: onay bekleyenler) -->
+                </header>
+                <div class="comment-list-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Yazı ID</th>
+                                <th>Yazar</th>
+                                <th>Yorum</th>
+                                <th>Tarih</th>
+                                <th>Durum</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody id="comment-list">
+                            <!-- Yorumlar buraya eklenecek -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="settings-content" class="content-section">
+                <header class="content-header">
+                    <h1><i class="fas fa-cog"></i> Genel Ayarlar</h1>
+                </header>
+                <form id="settings-form" class="settings-form">
+                    <div class="form-group">
+                        <label for="setting-site-title">Site Başlığı:</label>
+                        <input type="text" id="setting-site-title" name="siteTitle">
+                    </div>
+                    <div class="form-group">
+                        <label for="setting-posts-per-page">Sayfa Başına Yazı Sayısı (Ana Sayfa):</label>
+                        <input type="number" id="setting-posts-per-page" name="postsPerPage" min="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="setting-admin-theme">Panel Teması:</label>
+                        <select id="setting-admin-theme" name="adminTheme">
+                            <option value="light">Açık Tema</option>
+                            <option value="dark">Koyu Tema (Varsayılan)</option>
+                        </select>
+                    </div>
+                    <!-- Gelecekte daha fazla ayar eklenebilir -->
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Ayarları Kaydet</button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Add/Edit Post Modal (Form) -->
+            <div id="post-form-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <h2 id="modal-title">Yeni Yazı Ekle</h2>
+                    <form id="post-form">
+                        <input type="hidden" id="post-id">
+                        <div class="form-group">
+                            <label for="post-title">Başlık:</label>
+                            <input type="text" id="post-title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="post-excerpt">Kısa Açıklama (Excerpt):</label>
+                            <textarea id="post-excerpt" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="post-content">İçerik (Markdown Destekli):</label>
+                            <textarea id="post-content" rows="10" placeholder="İçeriğinizi Markdown formatında yazabilirsiniz..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="post-image">Görsel URL:</label>
+                            <input type="url" id="post-image" placeholder="https://example.com/image.jpg">
+                        </div>
+                        <div class="form-group">
+                            <label for="post-category">Kategori:</label>
+                            <input type="text" id="post-category">
+                        </div>
+                        <div class="form-group">
+                            <label for="post-date">Yayın Tarihi:</label>
+                            <input type="datetime-local" id="post-date">
+                        </div>
+                        <div class="form-group">
+                            <label for="post-author">Yazar:</label>
+                            <input type="text" id="post-author" value="Yönetici" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="post-status">Durum:</label>
+                            <select id="post-status">
+                                <option value="published">Yayınlandı</option>
+                                <option value="draft">Taslak</option>
+                                <option value="pending">Beklemede</option>
+                            </select>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="post-is-featured">
+                            <label for="post-is-featured">Öne Çıkan Yazı mı?</label>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="post-comments-enabled" checked>
+                            <label for="post-comments-enabled">Yorumlara İzin Verilsin mi?</label>
+                        </div>
+                        <div class="form-group modal-actions">
+                            <button type="submit" class="btn btn-primary" id="save-post-button">Kaydet</button>
+                            <button type="button" class="btn btn-secondary" id="cancel-post-button">İptal</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Add/Edit Page Modal -->
+            <div id="page-form-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-page-button">&times;</span>
+                    <h2 id="page-modal-title">Yeni Sayfa Ekle</h2>
+                    <form id="page-form">
+                        <input type="hidden" id="page-id">
+                        <div class="form-group">
+                            <label for="page-title">Sayfa Başlığı:</label>
+                            <input type="text" id="page-title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="page-slug">Kısa URL (Slug):</label>
+                            <input type="text" id="page-slug" placeholder="ornek-sayfa (isteğe bağlı, otomatik oluşturulur)">
+                        </div>
+                        <div class="form-group">
+                            <label for="page-content">İçerik (HTML/Markdown Editörü Eklenebilir):</label>
+                            <textarea id="page-content" rows="10" placeholder="Sayfa içeriğini buraya girin..."></textarea>
+                        </div>
+                        <div class="form-group modal-actions">
+                            <button type="submit" class="btn btn-primary" id="save-page-button">Kaydet</button>
+                            <button type="button" class="btn btn-secondary" id="cancel-page-button">İptal</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Giriş Formu (Başlangıçta gizli veya ayrı bir sayfada olabilir) -->
+    <!-- 
+    <div id="login-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <h2>Yönetici Girişi</h2>
+            <form id="login-form">
+                <div>
+                    <label for="username">Kullanıcı Adı:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div>
+                    <label for="password">Şifre:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit">Giriş Yap</button>
+            </form>
+        </div>
+    </div>
+    -->
+
+    <script src="admin-script.js"></script>
+</body>
+</html> 
